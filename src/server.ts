@@ -11,6 +11,8 @@ import cors from 'cors';
 import { verify } from 'jsonwebtoken';
 import compression from 'compression';
 import { checkConnection } from '@chat/elasticsearch';
+import { appRoutes } from '@chat/routes';
+import { createConnection } from '@chat/queues/connection';
 import { Channel } from 'amqplib';
 import { Server } from 'socket.io';
 
@@ -57,11 +59,11 @@ const standardMiddleware = (app: Application): void => {
 };
 
 const routesMiddleware = (app: Application): void => {
-    console.log(app);
+  appRoutes(app);
 };
 
 const startQueues = async (): Promise<void> => {
-  console.log('test');
+  chatChannel = await createConnection() as Channel;
 };
 
 const startElasticSearch = (): void => {
