@@ -28,7 +28,7 @@ const addMessage = async (data: IMessageDocument): Promise<IMessageDocument> => 
     // send email
     await publishDirectMessage(
       chatChannel,
-      'jobber-order-notification',
+      'adwuma-order-notification',
       'order-email',
       JSON.stringify(emailMessageDetails),
       'Order email sent to notification service.'
